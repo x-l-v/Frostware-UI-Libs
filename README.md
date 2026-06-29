@@ -5,7 +5,13 @@ this library is used in Allusive, Zentra, Winds, etc -- they had a modified vers
 - Custom name
 ```lua
 local UIName = "example"
-``` 
+```
+
+- Icon Asset
+```lua
+local IconAsset = "rbxassetid://10723407389"
+```
+
 - Load Library
 
 ```lua
