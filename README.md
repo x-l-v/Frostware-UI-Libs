@@ -4,6 +4,12 @@
 
 this library is used in Allusive, Zentra, Winds, etc -- they had a modified version of stackflow source 
 
+- Custom name
+```lua
+local UIName = "example"
+``` 
+- Load Library
+
 ```lua
 local LoaderLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/x-l-v/StackFlow-Main-reupload/refs/heads/main/src.lua"))();
 local Library = LoaderLibrary();
@@ -205,4 +211,9 @@ Text
  	}
 ]]
 ```
+- Ui accent
 
+```lua
+local AccentToggle = false
+local AccentColor = Color3.fromRGB(255, 120, 180)
+``` 
