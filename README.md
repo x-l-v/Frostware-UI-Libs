@@ -1,6 +1,5 @@
-# Unofficial Document
-
-this library is used in Allusive, Zentra, Winds, etc -- they had a modified version of stackflow source 
+# Frostware UI Library and Docs
+this is a modified version of the Frostware source, previously hardcoded code suchas branding(name) IconAsset and UiAccent, but now you can customize them without changing the src file, Enjoy!
 
 - Custom name
 ```lua
