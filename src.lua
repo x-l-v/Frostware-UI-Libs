@@ -567,7 +567,7 @@ function Library:create_ui()
     SideGradient.Rotation = 90
     SideGradient.Parent = SideBar
 
-    -- Center image
+    -- Center image -- 
     local CenterImage = Instance.new("ImageLabel")
     CenterImage.Name = "CenterImage"
     CenterImage.Parent = Container
@@ -575,7 +575,7 @@ function Library:create_ui()
     CenterImage.Position = UDim2.new(0.5, 0, 0.5, 0)
     CenterImage.Size = UDim2.new(0, 300, 0, 300)
     CenterImage.BackgroundTransparency = 1
-    CenterImage.Image = "rbxassetid://89379725443857"
+    CenterImage.Image = "" -- rbxassetid://89379725443857 -- 
     CenterImage.ScaleType = Enum.ScaleType.Fit
     CenterImage.ImageColor3 = Color3.fromRGB(152, 181, 255)
 
