@@ -754,7 +754,7 @@ function Library:create_ui()
     local SideBar = Instance.new("Frame")
     SideBar.Name = "GradientSide"
     SideBar.Parent = Container
-    SideBar.Size = UDim2.new(0, 152, 1, 0)
+    SideBar.Size = UDim2.new(0, 138, 1, 0)
     SideBar.Position = UDim2.new(0, 0, 0, 0)
     SideBar.BackgroundTransparency = 0.45
     SideBar.BackgroundColor3 = Color3.fromRGB(5, 5, 6)
@@ -795,7 +795,7 @@ function Library:create_ui()
     Handler.BackgroundTransparency = 1
     Handler.Name = 'Handler'
     Handler.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Handler.Size = UDim2.new(0, 720, 0, 480)
+    Handler.Size = UDim2.new(0, 620, 0, 400)
     Handler.BorderSizePixel = 0
     Handler.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Handler.Parent = Container
@@ -804,11 +804,11 @@ function Library:create_ui()
     Tabs.ScrollBarImageTransparency = 1
     Tabs.ScrollBarThickness = 0
     Tabs.Name = 'Tabs'
-    Tabs.Size = UDim2.new(0, 138, 0, 395)
+    Tabs.Size = UDim2.new(0, 118, 0, 325)
     Tabs.Selectable = false
     Tabs.AutomaticCanvasSize = Enum.AutomaticSize.XY
     Tabs.BackgroundTransparency = 1
-    Tabs.Position = UDim2.new(0, 18, 0, 64)
+    Tabs.Position = UDim2.new(0, 14, 0, 58)
     Tabs.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Tabs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Tabs.BorderSizePixel = 0
@@ -828,7 +828,7 @@ function Library:create_ui()
     ClientName.Name = 'ClientName'
     ClientName.Size = UDim2.new(0, 160, 0, 13)
     ClientName.AnchorPoint = Vector2.new(0, 0.5)
-    ClientName.Position = UDim2.new(0, 45, 0, 24)
+    ClientName.Position = UDim2.new(0, 40, 0, 23)
     ClientName.BackgroundTransparency = 1
     ClientName.TextXAlignment = Enum.TextXAlignment.Left
     ClientName.BorderSizePixel = 0
@@ -846,7 +846,7 @@ function Library:create_ui()
     
     local Pin = Instance.new('Frame')
     Pin.Name = 'Pin'
-    Pin.Position = UDim2.new(0, 18, 0, 72)
+    Pin.Position = UDim2.new(0, 14, 0, 66)
     Pin.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Pin.Size = UDim2.new(0, 3, 0, 18)
     Pin.BorderSizePixel = 0
@@ -866,7 +866,7 @@ Icon.ScaleType = Enum.ScaleType.Fit
 Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Icon.AnchorPoint = Vector2.new(0, 0.5)
 Icon.BackgroundTransparency = 1
-Icon.Position = UDim2.new(0, 20, 0, 24)
+Icon.Position = UDim2.new(0, 16, 0, 23)
 Icon.Size = UDim2.new(0, 18, 0, 18)
 Icon.BorderSizePixel = 0
 Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -931,9 +931,9 @@ end
     local Divider = Instance.new('Frame')
     Divider.Name = 'Divider'
     Divider.BackgroundTransparency = 0.25
-    Divider.Position = UDim2.new(0, 152, 0, 64)
+    Divider.Position = UDim2.new(0, 138, 0, 56)
     Divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Divider.Size = UDim2.new(0, 1, 0, 388)
+    Divider.Size = UDim2.new(0, 1, 0, 316)
     Divider.BorderSizePixel = 0
     Divider.BackgroundColor3 = Color3.fromRGB(46, 46, 49)
     Divider.Parent = Handler
@@ -960,7 +960,7 @@ end
     local SearchIcon = Instance.new('ImageLabel')
     SearchIcon.Name = 'SearchIcon'
     SearchIcon.BackgroundTransparency = 1
-    SearchIcon.Position = UDim2.new(1, -34, 0, 18)
+    SearchIcon.Position = UDim2.new(1, -30, 0, 17)
     SearchIcon.Size = UDim2.fromOffset(18, 18)
     SearchIcon.Image = 'rbxassetid://10734943674'
     SearchIcon.ImageColor3 = Color3.fromRGB(185, 185, 190)
@@ -1034,7 +1034,7 @@ end
     function self:change_visiblity(state: boolean)
         if state then
             TweenService:Create(Container, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                Size = UDim2.fromOffset(720, 480)
+                Size = UDim2.fromOffset(620, 400)
             }):Play()
         else
             TweenService:Create(Container, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
@@ -1069,7 +1069,7 @@ end
         end
     
         TweenService:Create(Container, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-            Size = UDim2.fromOffset(720, 480)
+            Size = UDim2.fromOffset(620, 400)
         }):Play()
 
         AcrylicBlur.new(Container)
@@ -1087,7 +1087,7 @@ end
                     local offset = object.LayoutOrder * 42
 
                     TweenService:Create(Pin, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                        Position = UDim2.new(0, 18, 0, 72 + offset)
+                        Position = UDim2.new(0, 14, 0, 66 + offset)
                     }):Play()    
 
                     TweenService:Create(object, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
@@ -1169,7 +1169,7 @@ end
         Tab.AutoButtonColor = false
         Tab.BackgroundTransparency = 1
         Tab.Name = 'Tab'
-        Tab.Size = UDim2.new(0, 126, 0, 38)
+        Tab.Size = UDim2.new(0, 110, 0, 38)
         Tab.BorderSizePixel = 0
         Tab.TextSize = 14
         Tab.BackgroundColor3 = Color3.fromRGB(18, 18, 20)
@@ -1187,7 +1187,7 @@ end
         TextLabel.Text = title
         TextLabel.Size = UDim2.new(0, font_size.X, 0, 16)
         TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-        TextLabel.Position = UDim2.new(0, 36, 0.5, 0)
+        TextLabel.Position = UDim2.new(0, 32, 0.5, 0)
         TextLabel.BackgroundTransparency = 1
         TextLabel.TextXAlignment = Enum.TextXAlignment.Left
         TextLabel.BorderSizePixel = 0
@@ -1210,7 +1210,7 @@ end
         Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Icon.AnchorPoint = Vector2.new(0, 0.5)
         Icon.BackgroundTransparency = 1
-        Icon.Position = UDim2.new(0, 14, 0.5, 0)
+        Icon.Position = UDim2.new(0, 11, 0.5, 0)
         Icon.Name = 'Icon'
         Icon.Image = icon or ""
         Icon.Size = UDim2.new(0, 12, 0, 12)
@@ -1222,12 +1222,12 @@ end
         LeftSection.Name = 'LeftSection'
         LeftSection.AutomaticCanvasSize = Enum.AutomaticSize.XY
         LeftSection.ScrollBarThickness = 0
-        LeftSection.Size = UDim2.new(0, 238, 0, 384)
+        LeftSection.Size = UDim2.new(0, 218, 0, 316)
         LeftSection.Selectable = false
         LeftSection.AnchorPoint = Vector2.new(0, 0)
         LeftSection.ScrollBarImageTransparency = 1
         LeftSection.BackgroundTransparency = 1
-        LeftSection.Position = UDim2.new(0, 176, 0, 76)
+        LeftSection.Position = UDim2.new(0, 160, 0, 70)
         LeftSection.BorderColor3 = Color3.fromRGB(0, 0, 0)
         LeftSection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         LeftSection.BorderSizePixel = 0
@@ -1249,12 +1249,12 @@ end
         RightSection.Name = 'RightSection'
         RightSection.AutomaticCanvasSize = Enum.AutomaticSize.XY
         RightSection.ScrollBarThickness = 0
-        RightSection.Size = UDim2.new(0, 238, 0, 384)
+        RightSection.Size = UDim2.new(0, 218, 0, 316)
         RightSection.Selectable = false
         RightSection.AnchorPoint = Vector2.new(0, 0)
         RightSection.ScrollBarImageTransparency = 1
         RightSection.BackgroundTransparency = 1
-        RightSection.Position = UDim2.new(0, 424, 0, 76)
+        RightSection.Position = UDim2.new(0, 390, 0, 70)
         RightSection.BorderColor3 = Color3.fromRGB(0, 0, 0)
         RightSection.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         RightSection.BorderSizePixel = 0
@@ -1305,7 +1305,7 @@ function TabManager:moduleparagraph(settings: any)
     Module.BackgroundTransparency = 0.08
     Module.Position = UDim2.new(0.004115226212888956, 0, 0, 0)
     Module.Name = 'ModuleParagraph'
-    Module.Size = UDim2.new(0, 241, 0, 70)
+    Module.Size = UDim2.new(0, 218, 0, 70)
     Module.BorderSizePixel = 0
     Module.BackgroundColor3 = Color3.fromRGB(12, 12, 13)
     Module.Parent = settings.section
@@ -1327,7 +1327,7 @@ function TabManager:moduleparagraph(settings: any)
     local Header = Instance.new('Frame')
     Header.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Header.Name = 'Header'
-    Header.Size = UDim2.new(0, 241, 0, 70)
+    Header.Size = UDim2.new(0, 218, 0, 70)
     Header.BorderSizePixel = 0
     Header.BackgroundTransparency = 1
     Header.Parent = Module
@@ -1343,7 +1343,7 @@ function TabManager:moduleparagraph(settings: any)
         ModuleName.Text = settings.richtext or "<font color='rgb(255,0,0)'>" .. UIName .. "</font> Info"
     end
     ModuleName.Name = 'ModuleName'
-    ModuleName.Size = UDim2.new(0, 205, 0, 13)
+    ModuleName.Size = UDim2.new(0, 184, 0, 13)
     ModuleName.AnchorPoint = Vector2.new(0, 0.5)
     ModuleName.Position = UDim2.new(0.0729999989271164, 0, 0.23999999463558197, 0)
     ModuleName.BackgroundTransparency = 1
@@ -1360,7 +1360,7 @@ function TabManager:moduleparagraph(settings: any)
     Description.TextTransparency = 0.699999988079071
     Description.Text = settings.description or "This is a description paragraph."
     Description.Name = 'Description'
-    Description.Size = UDim2.new(0, 205, 0, 28)
+    Description.Size = UDim2.new(0, 184, 0, 28)
     Description.AnchorPoint = Vector2.new(0, 0.5)
     Description.Position = UDim2.new(0.0729999989271164, 0, 0.55, 0)
     Description.BackgroundTransparency = 1
@@ -1390,7 +1390,7 @@ function TabManager:create_image(settings: any)
     Module.BackgroundTransparency = 0.08
     Module.Position = UDim2.new(0.004, 0, 0, 0)
     Module.Name = 'ImageModule'
-    Module.Size = UDim2.new(0, 241, 0, 140) 
+    Module.Size = UDim2.new(0, 218, 0, 140) 
     Module.BorderSizePixel = 0
     Module.BackgroundColor3 = Color3.fromRGB(12, 12, 13)
     Module.Parent = settings.section
@@ -1441,7 +1441,7 @@ end
             Module.BackgroundTransparency = 0.08
             Module.Position = UDim2.new(0.004115226212888956, 0, 0, 0)
             Module.Name = 'Module'
-            Module.Size = UDim2.new(0, 241, 0, 93)
+            Module.Size = UDim2.new(0, 218, 0, 93)
             Module.BorderSizePixel = 0
             Module.BackgroundColor3 = Color3.fromRGB(12, 12, 13)
             Module.Parent = settings.section
@@ -1468,7 +1468,7 @@ end
             Header.AutoButtonColor = false
             Header.BackgroundTransparency = 1
             Header.Name = 'Header'
-            Header.Size = UDim2.new(0, 241, 0, 93)
+            Header.Size = UDim2.new(0, 218, 0, 93)
             Header.BorderSizePixel = 0
             Header.TextSize = 14
             Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1500,7 +1500,7 @@ end
                 ModuleName.Text = settings.richtext or "<font color='rgb(255,0,0)'>" .. UIName .. "</font> user"
             end;
             ModuleName.Name = 'ModuleName'
-            ModuleName.Size = UDim2.new(0, 205, 0, 13)
+            ModuleName.Size = UDim2.new(0, 184, 0, 13)
             ModuleName.AnchorPoint = Vector2.new(0, 0.5)
             ModuleName.Position = UDim2.new(0.0729999989271164, 0, 0.23999999463558197, 0)
             ModuleName.BackgroundTransparency = 1
@@ -1517,7 +1517,7 @@ end
             Description.TextTransparency = 0.699999988079071
             Description.Text = settings.description
             Description.Name = 'Description'
-            Description.Size = UDim2.new(0, 205, 0, 13)
+            Description.Size = UDim2.new(0, 184, 0, 13)
             Description.AnchorPoint = Vector2.new(0, 0.5)
             Description.Position = UDim2.new(0.0729999989271164, 0, 0.41999998688697815, 0)
             Description.BackgroundTransparency = 1
@@ -1592,7 +1592,7 @@ end
             Divider.BackgroundTransparency = 0.5
             Divider.Position = UDim2.new(0.5, 0, 0.6200000047683716, 0)
             Divider.Name = 'Divider'
-            Divider.Size = UDim2.new(0, 241, 0, 1)
+            Divider.Size = UDim2.new(0, 218, 0, 1)
             Divider.BorderSizePixel = 0
             Divider.BackgroundColor3 = Color3.fromRGB(52, 66, 89)
             Divider.Parent = Header
@@ -1603,7 +1603,7 @@ end
             Divider.BackgroundTransparency = 0.5
             Divider.Position = UDim2.new(0.5, 0, 1, 0)
             Divider.Name = 'Divider'
-            Divider.Size = UDim2.new(0, 241, 0, 1)
+            Divider.Size = UDim2.new(0, 218, 0, 1)
             Divider.BorderSizePixel = 0
             Divider.BackgroundColor3 = Color3.fromRGB(52, 66, 89)
             Divider.Parent = Header
@@ -1613,7 +1613,7 @@ end
             Options.BackgroundTransparency = 1
             Options.Position = UDim2.new(0, 0, 1, 0)
             Options.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Options.Size = UDim2.new(0, 241, 0, 8)
+            Options.Size = UDim2.new(0, 218, 0, 8)
             Options.BorderSizePixel = 0
             Options.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Options.Parent = Module
@@ -1633,7 +1633,7 @@ end
 
                 if self._state then
                     TweenService:Create(Module, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                        Size = UDim2.fromOffset(241, 93 + self._size + self._multiplier)
+                        Size = UDim2.fromOffset(218, 93 + self._size + self._multiplier)
                     }):Play()
 
                     TweenService:Create(Toggle, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
@@ -1646,7 +1646,7 @@ end
                     }):Play()
                 else
                     TweenService:Create(Module, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                        Size = UDim2.fromOffset(241, 93)
+                        Size = UDim2.fromOffset(218, 93)
                     }):Play()
 
                     TweenService:Create(Toggle, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
@@ -1802,16 +1802,16 @@ end
                 self._size += settings.customScale or 70
             
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size)
                 end
             
-                Options.Size = UDim2.fromOffset(241, self._size)
+                Options.Size = UDim2.fromOffset(218, self._size)
             
                 -- Container Frame
                 local Paragraph = Instance.new('Frame')
                 Paragraph.BackgroundColor3 = Color3.fromRGB(32, 38, 51)
                 Paragraph.BackgroundTransparency = 0.1
-                Paragraph.Size = UDim2.new(0, 207, 0, 30) -- Initial size, auto-resized later
+                Paragraph.Size = UDim2.new(0, 188, 0, 30) -- Initial size, auto-resized later
                 Paragraph.BorderSizePixel = 0
                 Paragraph.Name = "Paragraph"
                 Paragraph.AutomaticSize = Enum.AutomaticSize.Y -- Support auto-resizing height
@@ -1886,16 +1886,16 @@ end
                 self._size += settings.customScale or 50 -- Adjust the default height for text elements
             
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size)
                 end
             
-                Options.Size = UDim2.fromOffset(241, self._size)
+                Options.Size = UDim2.fromOffset(218, self._size)
             
                 -- Container Frame
                 local TextFrame = Instance.new('Frame')
                 TextFrame.BackgroundColor3 = Color3.fromRGB(32, 38, 51)
                 TextFrame.BackgroundTransparency = 0.1
-                TextFrame.Size = UDim2.new(0, 207, 0, settings.CustomYSize) -- Initial size, auto-resized later
+                TextFrame.Size = UDim2.new(0, 188, 0, settings.CustomYSize) -- Initial size, auto-resized later
                 TextFrame.BorderSizePixel = 0
                 TextFrame.Name = "Text"
                 TextFrame.AutomaticSize = Enum.AutomaticSize.Y -- Support auto-resizing height
@@ -1966,17 +1966,17 @@ end
                 self._size += 32
             
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size)
                 end
             
-                Options.Size = UDim2.fromOffset(241, self._size)
+                Options.Size = UDim2.fromOffset(218, self._size)
             
                 local Label = Instance.new('TextLabel')
                 Label.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
                 Label.TextColor3 = Color3.fromRGB(255, 255, 255)
                 Label.TextTransparency = 0.2
                 Label.Text = settings.title or "Enter text"
-                Label.Size = UDim2.new(0, 207, 0, 13)
+                Label.Size = UDim2.new(0, 188, 0, 13)
                 Label.AnchorPoint = Vector2.new(0, 0)
                 Label.Position = UDim2.new(0, 0, 0, 0)
                 Label.BackgroundTransparency = 1
@@ -1993,7 +1993,7 @@ end
                 Textbox.PlaceholderText = settings.placeholder or "Enter text..."
                 Textbox.Text = Library._config._flags[settings.flag] or ""
                 Textbox.Name = 'Textbox'
-                Textbox.Size = UDim2.new(0, 207, 0, 15)
+                Textbox.Size = UDim2.new(0, 188, 0, 15)
                 Textbox.BorderSizePixel = 0
                 Textbox.TextSize = 10
                 Textbox.BackgroundColor3 = UIAccentColor
@@ -2034,9 +2034,9 @@ end
                 self._size += 20
             
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size)
                 end
-                Options.Size = UDim2.fromOffset(241, self._size)
+                Options.Size = UDim2.fromOffset(218, self._size)
             
                 local Checkbox = Instance.new("TextButton")
                 Checkbox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
@@ -2046,7 +2046,7 @@ end
                 Checkbox.AutoButtonColor = false
                 Checkbox.BackgroundTransparency = 1
                 Checkbox.Name = "Checkbox"
-                Checkbox.Size = UDim2.new(0, 207, 0, 15)
+                Checkbox.Size = UDim2.new(0, 188, 0, 15)
                 Checkbox.BorderSizePixel = 0
                 Checkbox.TextSize = 14
                 Checkbox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -2065,7 +2065,7 @@ end
                 TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                 TitleLabel.TextTransparency = 0.2
                 TitleLabel.Text = settings.title or "Skibidi"
-                TitleLabel.Size = UDim2.new(0, 142, 0, 13)
+                TitleLabel.Size = UDim2.new(0, 124, 0, 13)
                 TitleLabel.AnchorPoint = Vector2.new(0, 0.5)
                 TitleLabel.Position = UDim2.new(0, 0, 0.5, 0)
                 TitleLabel.BackgroundTransparency = 1
@@ -2222,9 +2222,9 @@ function ModuleManager:create_button(settings: any)
     self._size += 20
 
     if ModuleManager._state then
-        Module.Size = UDim2.fromOffset(241, 93 + self._size)
+        Module.Size = UDim2.fromOffset(218, 93 + self._size)
     end
-    Options.Size = UDim2.fromOffset(241, self._size)
+    Options.Size = UDim2.fromOffset(218, self._size)
 
     local Button = Instance.new("TextButton")
     Button.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
@@ -2235,7 +2235,7 @@ function ModuleManager:create_button(settings: any)
     Button.BackgroundTransparency = 0.2
     Button.BackgroundColor3 = Color3.fromRGB(41, 49, 62)
     Button.Name = "Button"
-    Button.Size = UDim2.new(0, 207, 0, 20)
+    Button.Size = UDim2.new(0, 188, 0, 20)
     Button.BorderSizePixel = 0
     Button.TextSize = 11
     Button.Parent = Options
@@ -2266,11 +2266,11 @@ end
                 self._size += 27
             
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size)
                 end
 
                 local dividerHeight = 1
-                local dividerWidth = 207 -- Adjust this to fit your UI width
+                local dividerWidth = 188
             
                 -- Create the outer frame to control spacing above and below
                 local OuterFrame = Instance.new('Frame')
@@ -2286,7 +2286,7 @@ end
                     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255) -- 154, 182, 255
                     TextLabel.TextTransparency = 0
                     TextLabel.Text = settings.title
-                    TextLabel.Size = UDim2.new(0, 153, 0, 13)
+                    TextLabel.Size = UDim2.new(0, 137, 0, 13)
                     TextLabel.Position = UDim2.new(0.5, 0, 0.501, 0)
                     TextLabel.BackgroundTransparency = 1
                     TextLabel.TextXAlignment = Enum.TextXAlignment.Center
@@ -2349,10 +2349,10 @@ end
                 self._size += 27
 
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size)
                 end
 
-                Options.Size = UDim2.fromOffset(241, self._size)
+                Options.Size = UDim2.fromOffset(218, self._size)
 
                 local Slider = Instance.new('TextButton')
                 Slider.FontFace = Font.new('rbxasset://fonts/families/SourceSansPro.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal);
@@ -2363,7 +2363,7 @@ end
                 Slider.AutoButtonColor = false
                 Slider.BackgroundTransparency = 1
                 Slider.Name = 'Slider'
-                Slider.Size = UDim2.new(0, 207, 0, 22)
+                Slider.Size = UDim2.new(0, 188, 0, 22)
                 Slider.BorderSizePixel = 0
                 Slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
                 Slider.Parent = Options
@@ -2380,7 +2380,7 @@ end
                 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                 TextLabel.TextTransparency = 0.20000000298023224
                 TextLabel.Text = settings.title
-                TextLabel.Size = UDim2.new(0, 153, 0, 13)
+                TextLabel.Size = UDim2.new(0, 137, 0, 13)
                 TextLabel.Position = UDim2.new(0, 0, 0.05000000074505806, 0)
                 TextLabel.BackgroundTransparency = 1
                 TextLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -2395,7 +2395,7 @@ end
                 Drag.BackgroundTransparency = 0.8999999761581421
                 Drag.Position = UDim2.new(0.5, 0, 0.949999988079071, 0)
                 Drag.Name = 'Drag'
-                Drag.Size = UDim2.new(0, 207, 0, 4)
+                Drag.Size = UDim2.new(0, 188, 0, 4)
                 Drag.BorderSizePixel = 0
                 Drag.BackgroundColor3 = UIAccentColor
                 Drag.Parent = Slider
@@ -2548,9 +2548,9 @@ end
 
                 if not settings.Order then
                     if ModuleManager._state then
-                        Module.Size = UDim2.fromOffset(241, 93 + self._size)
+                        Module.Size = UDim2.fromOffset(218, 93 + self._size)
                     end
-                    Options.Size = UDim2.fromOffset(241, self._size)
+                    Options.Size = UDim2.fromOffset(218, self._size)
                 end
 
                 local Dropdown = Instance.new('TextButton')
@@ -2561,7 +2561,7 @@ end
                 Dropdown.AutoButtonColor = false
                 Dropdown.BackgroundTransparency = 1
                 Dropdown.Name = 'Dropdown'
-                Dropdown.Size = UDim2.new(0, 207, 0, 39)
+                Dropdown.Size = UDim2.new(0, 188, 0, 39)
                 Dropdown.BorderSizePixel = 0
                 Dropdown.TextSize = 14
                 Dropdown.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -2588,7 +2588,7 @@ end
                 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                 TextLabel.TextTransparency = 0.20000000298023224
                 TextLabel.Text = settings.title
-                TextLabel.Size = UDim2.new(0, 207, 0, 13)
+                TextLabel.Size = UDim2.new(0, 188, 0, 13)
                 TextLabel.BackgroundTransparency = 1
                 TextLabel.TextXAlignment = Enum.TextXAlignment.Left
                 TextLabel.BorderSizePixel = 0
@@ -2603,7 +2603,7 @@ end
                 Box.BackgroundTransparency = 0.8999999761581421
                 Box.Position = UDim2.new(0.5, 0, 1.2000000476837158, 0)
                 Box.Name = 'Box'
-                Box.Size = UDim2.new(0, 207, 0, 22)
+                Box.Size = UDim2.new(0, 188, 0, 22)
                 Box.BorderSizePixel = 0
                 Box.BackgroundColor3 = UIAccentColor
                 Box.Parent = TextLabel
@@ -2618,7 +2618,7 @@ end
                 Header.BackgroundTransparency = 1
                 Header.Position = UDim2.new(0.5, 0, 0, 0)
                 Header.Name = 'Header'
-                Header.Size = UDim2.new(0, 207, 0, 22)
+                Header.Size = UDim2.new(0, 188, 0, 22)
                 Header.BorderSizePixel = 0
                 Header.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 Header.Parent = Box
@@ -2666,7 +2666,7 @@ end
                 Options.AutomaticCanvasSize = Enum.AutomaticSize.XY
                 Options.ScrollBarThickness = 0
                 Options.Name = 'Options'
-                Options.Size = UDim2.new(0, 207, 0, 0)
+                Options.Size = UDim2.new(0, 188, 0, 0)
                 Options.BackgroundTransparency = 1
                 Options.Position = UDim2.new(0, 0, 1, 0)
                 Options.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2805,19 +2805,19 @@ end
                         CurrentDropSizeState = self._size;
 
                         TweenService:Create(Module, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(241, 93 + ModuleManager._size + ModuleManager._multiplier)
+                            Size = UDim2.fromOffset(218, 93 + ModuleManager._size + ModuleManager._multiplier)
                         }):Play()
 
                         TweenService:Create(Module.Options, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(241, ModuleManager._size + ModuleManager._multiplier)
+                            Size = UDim2.fromOffset(218, ModuleManager._size + ModuleManager._multiplier)
                         }):Play()
 
                         TweenService:Create(Dropdown, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(207, 39 + self._size)
+                            Size = UDim2.fromOffset(188, 39 + self._size)
                         }):Play()
 
                         TweenService:Create(Box, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(207, 22 + self._size)
+                            Size = UDim2.fromOffset(188, 22 + self._size)
                         }):Play()
 
                         TweenService:Create(Arrow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
@@ -2829,19 +2829,19 @@ end
                         CurrentDropSizeState = 0;
 
                         TweenService:Create(Module, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(241, 93 + ModuleManager._size + ModuleManager._multiplier)
+                            Size = UDim2.fromOffset(218, 93 + ModuleManager._size + ModuleManager._multiplier)
                         }):Play()
 
                         TweenService:Create(Module.Options, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(241, ModuleManager._size + ModuleManager._multiplier)
+                            Size = UDim2.fromOffset(218, ModuleManager._size + ModuleManager._multiplier)
                         }):Play()
 
                         TweenService:Create(Dropdown, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(207, 39)
+                            Size = UDim2.fromOffset(188, 39)
                         }):Play()
 
                         TweenService:Create(Box, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-                            Size = UDim2.fromOffset(207, 22)
+                            Size = UDim2.fromOffset(188, 22)
                         }):Play()
 
                         TweenService:Create(Arrow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
@@ -2860,7 +2860,7 @@ end
                         Option.TextTransparency = 0.6000000238418579
                         Option.AnchorPoint = Vector2.new(0, 0.5)
                         Option.TextSize = 10
-                        Option.Size = UDim2.new(0, 186, 0, 16)
+                        Option.Size = UDim2.new(0, 168, 0, 16)
                         Option.TextColor3 = Color3.fromRGB(255, 255, 255)
                         Option.BorderColor3 = Color3.fromRGB(0, 0, 0)
                         Option.Text = (typeof(value) == "string" and value) or value.Name;
@@ -2904,7 +2904,7 @@ end
                         end
     
                         DropdownManager._size += 16
-                        Options.Size = UDim2.fromOffset(207, DropdownManager._size)
+                        Options.Size = UDim2.fromOffset(188, DropdownManager._size)
                     end
                 end
 
@@ -2941,13 +2941,13 @@ end
                 self._size += 20
             
                 if ModuleManager._state then
-                    Module.Size = UDim2.fromOffset(241, 93 + self._size);
+                    Module.Size = UDim2.fromOffset(218, 93 + self._size);
                 end
             
-                Options.Size = UDim2.fromOffset(241, self._size);
+                Options.Size = UDim2.fromOffset(218, self._size);
             
                 local FeatureContainer = Instance.new("Frame")
-                FeatureContainer.Size = UDim2.new(0, 207, 0, 16)
+                FeatureContainer.Size = UDim2.new(0, 188, 0, 16)
                 FeatureContainer.BackgroundTransparency = 1
                 FeatureContainer.Parent = Options
                 FeatureContainer.LayoutOrder = LayoutOrderModule
@@ -3137,3 +3137,4 @@ end
 return Library
       
        
+
