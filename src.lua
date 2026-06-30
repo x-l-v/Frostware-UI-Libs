@@ -368,6 +368,22 @@ local function ResolveMethodValue(first, second)
 	return first
 end
 
+local function ResolveAssetId(asset)
+	if typeof(asset) == "number" then
+		return "rbxassetid://" .. tostring(asset)
+	end
+
+	if typeof(asset) == "string" and asset ~= "" then
+		if tonumber(asset) then
+			return "rbxassetid://" .. asset
+		end
+
+		return asset
+	end
+
+	return nil
+end
+
 local function UpdateUIAccentColor()
 	UIAccentColor = AccentToggle and AccentColor or DefaultAccentColor
 	return UIAccentColor
@@ -424,11 +440,7 @@ function Library.UIAccent(first, second, third)
 end
 
 function Library.IconAsset(first, second)
-	local asset = ResolveMethodValue(first, second)
-
-	if typeof(asset) == "number" then
-		asset = "rbxassetid://" .. tostring(asset)
-	end
+	local asset = ResolveAssetId(ResolveMethodValue(first, second))
 
 	if typeof(asset) == "string" and asset ~= "" then
 		IconAsset = asset
@@ -437,6 +449,8 @@ function Library.IconAsset(first, second)
 
 	return IconAsset
 end
+
+Library.CustomIcon = Library.IconAsset
 
 function Library.IconAnimated(first, second)
 	IconAnimated = ResolveMethodValue(first, second) == true
@@ -462,9 +476,7 @@ function Library.IconSprite(first, second, third, fourth, fifth, sixth, seventh,
 		fps = eighth
 	end
 
-	if typeof(asset) == "number" then
-		asset = "rbxassetid://" .. tostring(asset)
-	end
+	asset = ResolveAssetId(asset)
 
 	if typeof(asset) == "string" and asset ~= "" then
 		IconAsset = asset
@@ -482,7 +494,20 @@ function Library.IconSprite(first, second, third, fourth, fifth, sixth, seventh,
 end
 
 
-function Library.new()
+function Library.new(settings)
+	settings = type(settings) == "table" and settings or {}
+
+	local customIcon = settings.CustomIcon or settings.customIcon or settings.Icon or settings.icon
+	if customIcon ~= nil then
+		Library.IconAsset(customIcon)
+	end
+
+	if settings.IconAnimated ~= nil then
+		Library.IconAnimated(settings.IconAnimated)
+	elseif settings.iconAnimated ~= nil then
+		Library.IconAnimated(settings.iconAnimated)
+	end
+
     local self = setmetatable({
         _loaded = false,
         _tab = 0,
@@ -1072,6 +1097,7 @@ end
     end
 
     function self:create_tab(title: string, icon: string)
+        icon = ResolveAssetId(icon) or IconAsset
         local TabManager = {}
 
         local LayoutOrder = 0;
