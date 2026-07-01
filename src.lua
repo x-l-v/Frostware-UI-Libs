@@ -407,6 +407,58 @@ local function ResolveAssetId(asset)
 	return nil
 end
 
+local function GetUrlExtension(source, fallback)
+	local extension = source:match("%.([%w]+)%??[^/]*$") or fallback or "png"
+	extension = extension:lower()
+
+	if not extension:match("^[%w]+$") or #extension > 5 then
+		extension = fallback or "png"
+	end
+
+	return extension
+end
+
+local function ResolveWebMediaAsset(source, folderName, name, fallbackExtension)
+	source = ResolveAssetId(source)
+
+	if typeof(source) ~= "string" or source == "" then
+		return nil
+	end
+
+	if source:match("^https?://") and type(writefile) == "function" and type(getcustomasset) == "function" then
+		local mediaFolder = ConfigFolder .. "/" .. (folderName or "Media")
+
+		if type(isfolder) == "function" and type(makefolder) == "function" and not isfolder(mediaFolder) then
+			pcall(makefolder, mediaFolder)
+		end
+
+		local extension = GetUrlExtension(source, fallbackExtension)
+		local fileName = tostring(name or "media"):gsub("[^%w_%-]", "_")
+		local filePath = mediaFolder .. "/" .. fileName .. "." .. extension
+		local fileExists = type(isfile) == "function" and isfile(filePath)
+
+		if not fileExists then
+			local ok, data = pcall(function()
+				return game:HttpGet(source, true)
+			end)
+
+			if ok and data then
+				pcall(writefile, filePath, data)
+			end
+		end
+
+		if type(isfile) ~= "function" or isfile(filePath) then
+			local ok, customAsset = pcall(getcustomasset, filePath)
+
+			if ok and customAsset then
+				return customAsset, filePath
+			end
+		end
+	end
+
+	return source
+end
+
 local function Clamp01(value)
 	value = tonumber(value)
 
@@ -971,50 +1023,7 @@ end
 local BackgroundMediaToken = 0
 
 local function ResolveBackgroundMediaAsset(source, name)
-	source = ResolveAssetId(source)
-
-	if typeof(source) ~= "string" or source == "" then
-		return nil
-	end
-
-	if source:match("^https?://") and type(writefile) == "function" and type(getcustomasset) == "function" then
-		local mediaFolder = ConfigFolder .. "/BackgroundMedia"
-
-		if type(isfolder) == "function" and type(makefolder) == "function" and not isfolder(mediaFolder) then
-			pcall(makefolder, mediaFolder)
-		end
-
-		local extension = source:match("%.([%w]+)%??[^/]*$") or "png"
-		extension = extension:lower()
-
-		if not extension:match("^[%w]+$") or #extension > 5 then
-			extension = "png"
-		end
-
-		local fileName = tostring(name or "background_media"):gsub("[^%w_%-]", "_")
-		local filePath = mediaFolder .. "/" .. fileName .. "." .. extension
-		local fileExists = type(isfile) == "function" and isfile(filePath)
-
-		if not fileExists then
-			local ok, data = pcall(function()
-				return game:HttpGet(source, true)
-			end)
-
-			if ok and data then
-				pcall(writefile, filePath, data)
-			end
-		end
-
-		if type(isfile) ~= "function" or isfile(filePath) then
-			local ok, customAsset = pcall(getcustomasset, filePath)
-
-			if ok and customAsset then
-				return customAsset
-			end
-		end
-	end
-
-	return source
+	return ResolveWebMediaAsset(source, "BackgroundMedia", name or "background_media", "png")
 end
 
 local function ResolveScaleType(value)
@@ -1607,6 +1616,7 @@ function TabManager:moduleparagraph(settings: any)
 end
 
 function TabManager:create_image(settings: any)
+    settings = settings or {}
 
     if settings.section == 'right' then
         settings.section = RightSection
@@ -1614,13 +1624,20 @@ function TabManager:create_image(settings: any)
         settings.section = LeftSection
     end
 
+    local width = tonumber(settings.width or settings.Width) or 215
+    local height = tonumber(settings.height or settings.Height) or 120
+    local moduleHeight = tonumber(settings.moduleHeight or settings.ModuleHeight) or (height + 20)
+    local mediaType = tostring(settings.type or settings.Type or settings.mediaType or settings.MediaType or "image"):lower()
+    local source = settings.source or settings.Source or settings.url or settings.Url or settings.image or settings.Image or settings.video or settings.Video
+    local asset = ResolveWebMediaAsset(source or "rbxassetid://123456789", "Media", settings.saveAs or settings.SaveAs or settings.name or settings.Name or "media", mediaType == "video" and "mp4" or "png")
+
     local Module = Instance.new('Frame')
     Module.ClipsDescendants = true
     Module.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Module.BackgroundTransparency = 0.18
     Module.Position = UDim2.new(0.004, 0, 0, 0)
-    Module.Name = 'ImageModule'
-    Module.Size = UDim2.new(0, 218, 0, 140) 
+    Module.Name = mediaType == "video" and 'VideoModule' or 'ImageModule'
+    Module.Size = UDim2.new(0, 218, 0, moduleHeight) 
     Module.BorderSizePixel = 0
     Module.BackgroundColor3 = Color3.fromRGB(12, 12, 13)
     Module.Parent = settings.section
@@ -1634,20 +1651,99 @@ function TabManager:create_image(settings: any)
     UIStroke.Transparency = 0.3
     UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     UIStroke.Parent = Module
-    
-    local Image = Instance.new("ImageLabel")
-    Image.Name = "GameImage"
-    Image.Parent = Module
-    Image.AnchorPoint = Vector2.new(0.5, 0.5) 
-    Image.Position = UDim2.new(0.5, 0, 0.5, 0) 
-    Image.Size = UDim2.new(0, 215, 0, 120)  
-    Image.BackgroundTransparency = 1
-    Image.Image = settings.image or "rbxassetid://123456789"
 
-    local ImageCorner = Instance.new("UICorner")
-    ImageCorner.CornerRadius = UDim.new(0, 7)  
-    ImageCorner.Parent = Image
+    local Media
+
+    if mediaType == "video" or mediaType == "mp4" or mediaType == "webm" then
+        Media = Instance.new("VideoFrame")
+        Media.Name = "GameVideo"
+        Media.Video = asset
+        Media.Looped = settings.looped ~= false and settings.Looped ~= false
+        Media.Volume = tonumber(settings.volume or settings.Volume) or 0
+    else
+        Media = Instance.new("ImageLabel")
+        Media.Name = "GameImage"
+        Media.Image = asset
+        Media.ImageColor3 = settings.color or settings.Color or Color3.fromRGB(255, 255, 255)
+        Media.ImageTransparency = Clamp01(settings.transparency or settings.Transparency) or 0
+        Media.ScaleType = ResolveScaleType(settings.scaleType or settings.ScaleType or "Fit")
+
+        if mediaType == "gif" or mediaType == "sprite" then
+            local spriteWidth = tonumber(settings.spriteWidth or settings.SpriteWidth or settings.frameWidth or settings.FrameWidth)
+            local spriteHeight = tonumber(settings.spriteHeight or settings.SpriteHeight or settings.frameHeight or settings.FrameHeight)
+            local rows = tonumber(settings.rows or settings.Rows)
+            local columns = tonumber(settings.columns or settings.Columns)
+            local frames = tonumber(settings.frames or settings.Frames)
+            local fps = tonumber(settings.fps or settings.FPS)
+
+            if spriteWidth and spriteHeight and rows and columns and frames then
+                AnimateGif(Media, spriteWidth, spriteHeight, rows, columns, frames, asset, fps)
+            end
+        end
+    end
+
+    Media.Parent = Module
+    Media.AnchorPoint = Vector2.new(0.5, 0.5) 
+    Media.Position = UDim2.new(0.5, 0, 0.5, 0) 
+    Media.Size = UDim2.new(0, width, 0, height)  
+    Media.BackgroundTransparency = 1
+    Media.BorderSizePixel = 0
+
+    local MediaCorner = Instance.new("UICorner")
+    MediaCorner.CornerRadius = UDim.new(0, tonumber(settings.cornerRadius or settings.CornerRadius) or 7)  
+    MediaCorner.Parent = Media
+
+    if Media:IsA("VideoFrame") then
+        pcall(function()
+            Media.Playing = settings.autoplay ~= false and settings.AutoPlay ~= false
+        end)
+        if settings.autoplay ~= false and settings.AutoPlay ~= false then
+            pcall(function()
+                Media:Play()
+            end)
+        end
+    end
+
+    local MediaManager = {
+        _module = Module,
+        _media = Media
+    }
+
+    function MediaManager:set_source(newSource, newSettings)
+        newSettings = newSettings or {}
+        local newAsset = ResolveWebMediaAsset(newSource, "Media", newSettings.saveAs or newSettings.SaveAs or settings.saveAs or settings.SaveAs or "media", mediaType == "video" and "mp4" or "png")
+
+        if Media:IsA("VideoFrame") then
+            Media.Video = newAsset
+            pcall(function()
+                Media:Play()
+            end)
+        else
+            Media.Image = newAsset
+        end
+    end
+
+    function MediaManager:play()
+        if Media:IsA("VideoFrame") then
+            pcall(function()
+                Media:Play()
+            end)
+        end
+    end
+
+    function MediaManager:pause()
+        if Media:IsA("VideoFrame") then
+            pcall(function()
+                Media:Pause()
+            end)
+        end
+    end
+
+    return MediaManager
 end
+
+TabManager.create_media = TabManager.create_image
+TabManager.CreateMedia = TabManager.create_image
 
         function TabManager:create_module(settings: any)
 
