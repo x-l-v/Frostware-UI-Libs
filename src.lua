@@ -1750,6 +1750,8 @@ TabManager.create_media = TabManager.create_image
 TabManager.CreateMedia = TabManager.create_image
 
         function TabManager:create_module(settings: any)
+            settings = settings or {}
+            settings.flag = settings.flag or tostring(settings.title or "module"):gsub("[^%w_%-]", "_"):lower()
 
             local LayoutOrderModule = 0;
 
